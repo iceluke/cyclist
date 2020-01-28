@@ -20,9 +20,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 	libpcre-ocaml-dev \
 	libocamlgraph-ocaml-dev
 RUN apt-get install -y unzip
-RUN wget https://github.com/ngorogiannis/cyclist/archive/sl-v2.zip
-RUN unzip sl-v2.zip
-WORKDIR "./cyclist-sl-v2"
+RUN git clone https://github.com/iceluke/cyclist.git
+WORKDIR "./cyclist"
 RUN make
 RUN chmod +x *.native
-ENV PATH="/cyclist-sl-v2:$PATH"
+ENV PATH="/cyclist:$PATH"
